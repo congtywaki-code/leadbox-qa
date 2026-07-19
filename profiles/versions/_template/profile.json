@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "leadboxVersion": "UNMAPPED",
+  "runtime": {
+    "frontend": "wordpress-flatsome",
+    "superadmin": "wordpress-admin",
+    "shopadmin": "leadbox-app",
+    "sharedRendererRequired": true
+  },
+  "urls": {
+    "baseEnv": "LEADBOX_BASE_URL",
+    "appEnv": "LEADBOX_APP_URL",
+    "publicEnv": "LEADBOX_PUBLIC_URL"
+  },
+  "routes": {
+    "wpLogin": "/wp-login.php",
+    "superadminMedia": "/wp-admin/admin.php?page=leadbox-media-library",
+    "shopadminLogin": "/dang-nhap",
+    "shopadminMedia": "/cong-cu-thu-lead/thu-vien-anh",
+    "studio": "/cong-cu-thu-lead/studio",
+    "qaHealth": "/wp-json/leadbox-qa/v1/health"
+  },
+  "selectors": {
+    "wp": {
+      "username": "#user_login",
+      "password": "#user_pass",
+      "submit": "#wp-submit",
+      "adminBar": "#wpadminbar"
+    },
+    "shopLogin": {
+      "username": "[data-qa='auth-email']",
+      "password": "[data-qa='auth-password']",
+      "submit": "[data-qa='auth-submit']",
+      "authenticatedMarker": "[data-qa='shop-shell']"
+    },
+    "media": {
+      "uploadInput": "[data-qa='media-upload-input']",
+      "titleInput": "[data-qa='media-title']",
+      "industrySelect": "[data-qa='media-industry']",
+      "topicSelect": "[data-qa='media-topic']",
+      "publishButton": "[data-qa='media-publish']",
+      "publishSuccess": "[data-qa='media-publish-success']",
+      "library": "[data-qa='media-library']",
+      "cardByTitle": "[data-qa='media-card'][data-media-title='{title}']",
+      "industryFilter": "[data-qa='media-industry-filter']",
+      "topicFilter": "[data-qa='media-topic-filter']",
+      "emptyState": "[data-qa='media-empty-state']"
+    },
+    "studio": {
+      "shell": "[data-qa='studio-shell']",
+      "preview": "[data-qa='studio-preview']",
+      "canvas": "[data-qa='studio-canvas']"
+    }
+  },
+  "fixtures": {
+    "industry": "spa-lam-dep",
+    "topic": "khuyen-mai",
+    "mediaFile": "fixtures/sample-media.svg"
+  },
+  "capabilities": {
+    "mediaWriteTest": false,
+    "taxonomyRequired": true,
+    "visualBaselineRequired": false,
+    "safeCleanup": false,
+    "apiContract": false,
+    "tenantIsolation": false,
+    "mediaDeleteRestore": false,
+    "visualBaselineGovernance": false,
+    "sharedRendererParity": false
+  },
+  "qaFoundationVersion": "1.4.0",
+  "testData": {
+    "prefix": "LBQA-",
+    "manifest": "fixtures/manifests/active-run.json",
+    "cleanupPolicy": "qa-prefix-only"
+  },
+  "apiContracts": {
+    "mediaTaxonomies": "/wp-json/leadbox/v1/media/taxonomies",
+    "mediaDetail": "/wp-json/leadbox/v1/media/{id}"
+  },
+  "visual": {
+    "policy": "config/visual-policy.json",
+    "responsiveMatrix": "config/responsive-matrix.json",
+    "baselineStatus": "unmapped"
+  }
+}

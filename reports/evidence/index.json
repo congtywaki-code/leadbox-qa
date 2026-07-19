@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-19T18:19:31.500Z",
+  "artifacts": [
+    {
+      "file": "reports/evidence/index.json",
+      "bytes": 250,
+      "sha256": "f9a178c3c05515f7b7a38f534f617c0cf3d248fe51789f5b0a0f083e62a83fa2"
+    },
+    {
+      "file": "reports/evidence/staging-readiness.json",
+      "bytes": 450,
+      "sha256": "db1a75271d8b3c2fe2ff4d087783ddd01bc23ffdf44bd88923aca5dc8cfaff36"
+    }
+  ]
+}

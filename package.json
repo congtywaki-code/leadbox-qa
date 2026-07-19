@@ -1,0 +1,51 @@
+{
+  "name": "leadbox-qa-integration",
+  "version": "2.0.1",
+  "private": true,
+  "description": "LeadBox QA Integration 2.0.1 workflow hotfix mapped to LeadBox CRM 9.9.1.12-rc2: Node.js 22, npm install without lockfile cache dependency, manual workflow execution, staging evidence and governed visual baselines.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "qa:validate": "node scripts/validate-profile.mjs",
+    "qa:setup": "playwright test tests/setup --project=setup-superadmin --project=setup-shopadmin",
+    "qa:smoke": "playwright test tests/smoke",
+    "qa:media": "playwright test tests/media tests/cross-role/media-taxonomy.spec.ts",
+    "qa:visual": "playwright test tests/visual",
+    "qa:a11y": "playwright test tests/accessibility",
+    "qa:all": "npm run qa:validate && playwright test",
+    "qa:report": "playwright show-report reports/html",
+    "qa:analyze": "node packages/ai-qa-analyzer/src/analyze.mjs",
+    "qa:lighthouse": "lhci autorun --config=lighthouserc.json",
+    "qa:sample": "node scripts/create-sample-summary.mjs",
+    "qa:dashboard": "node scripts/build-dashboard.mjs",
+    "qa:gate": "node packages/shared-reporters/src/release-gate.mjs",
+    "qa:foundation-check": "npm run qa:validate && npm run qa:sample && npm run qa:dashboard && npm run qa:analyze",
+    "qa:data:prepare": "node scripts/test-data-lifecycle.mjs prepare",
+    "qa:data:cleanup": "node scripts/test-data-lifecycle.mjs cleanup",
+    "qa:contract": "playwright test tests/api-contract",
+    "qa:tenant": "playwright test tests/tenant-isolation",
+    "qa:media:lifecycle": "playwright test tests/media/delete-restore.spec.ts",
+    "qa:1.3": "npm run qa:validate && npm run qa:contract && npm run qa:tenant && npm run qa:media:lifecycle && npm run qa:dashboard && npm run qa:analyze",
+    "qa:visual:approve": "node scripts/visual-approval.mjs approve",
+    "qa:visual:reject": "node scripts/visual-approval.mjs reject",
+    "qa:visual:gate": "node scripts/check-visual-governance.mjs",
+    "qa:1.4": "npm run qa:validate && npm run qa:visual && npm run qa:visual:gate",
+    "qa:mapped": "npm run qa:validate && npm run qa:setup && npm run qa:smoke && npm run qa:media && npm run qa:visual:gate",
+    "qa:staging:readiness": "node scripts/staging-readiness.mjs",
+    "qa:auth:evidence": "playwright test tests/integration/real-auth-evidence.spec.ts --project=desktop",
+    "qa:media:diagnose": "playwright test tests/integration/media-publish-visibility-diagnosis.spec.ts --project=desktop",
+    "qa:baseline:capture": "playwright test tests/integration/first-baseline-candidates.spec.ts --project=desktop",
+    "qa:evidence:index": "node scripts/evidence-index.mjs",
+    "qa:baseline:promote": "node scripts/promote-approved-baselines.mjs",
+    "qa:integration:2.0": "npm run qa:validate && npm run qa:staging:readiness && npm run qa:setup && npm run qa:auth:evidence && npm run qa:media:diagnose && npm run qa:baseline:capture && npm run qa:evidence:index && npm run qa:visual:gate"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.55.0",
+    "dotenv": "^17.2.1",
+    "typescript": "^5.9.2"
+  }
+}

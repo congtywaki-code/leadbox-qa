@@ -1,0 +1,2 @@
+export function assertEnvelope(body:any){ if(!body||typeof body!=='object') throw new Error('Response must be object'); if(!('data' in body)||!('meta' in body)) throw new Error('Expected data/meta envelope'); }
+export function assertNoSecretLeak(body:any){ const s=JSON.stringify(body).toLowerCase(); for(const key of ['secret_key','api_secret','password_hash','private_key']) if(s.includes(key)) throw new Error(`Potential secret leak: ${key}`); }

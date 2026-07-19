@@ -1,0 +1,5 @@
+import fs from 'node:fs'; import path from 'node:path';
+const cmd=process.argv[2]; const run=process.env.QA_TEST_RUN_ID||`local-${Date.now()}`; const dir='fixtures/manifests'; const file=path.join(dir,'active-run.json'); fs.mkdirSync(dir,{recursive:true});
+if(cmd==='prepare'){ fs.writeFileSync(file,JSON.stringify({schema:1,runId:run,prefix:`LBQA-${run}`,artifacts:[],createdAt:new Date().toISOString()},null,2)); console.log(`Prepared ${file}`); }
+else if(cmd==='cleanup'){ const m=fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8')):{artifacts:[]}; const unsafe=(m.artifacts||[]).filter(x=>!String(x.name||x.id||'').startsWith('LBQA-')); if(unsafe.length){ console.error('Cleanup blocked: manifest contains non-QA artifacts'); process.exit(2); } fs.writeFileSync(file,JSON.stringify({...m,artifacts:[],cleanedAt:new Date().toISOString()},null,2)); console.log('Safe cleanup manifest completed. Runtime deletion requires mapped API/UI adapter.'); }
+else { console.error('Use prepare|cleanup'); process.exit(1); }

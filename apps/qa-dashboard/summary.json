@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-07-19T17:55:19.601Z",
+  "counts": {
+    "pass": 2,
+    "fail": 0,
+    "blocked": 2
+  },
+  "coverage": 35,
+  "rules": [
+    {
+      "id": "LB-MEDIA-001",
+      "status": "BLOCKED",
+      "severity": "HIGH",
+      "message": "Chưa map selector và route bản LeadBox chính thức."
+    },
+    {
+      "id": "LB-MEDIA-003",
+      "status": "BLOCKED",
+      "severity": "HIGH",
+      "message": "Chưa xác minh taxonomy ngành nghề/chủ đề xuyên vai trò."
+    },
+    {
+      "id": "LB-RESP-001",
+      "status": "PASS",
+      "severity": "HIGH",
+      "message": "Rule containment đã được khai báo trong scaffold."
+    },
+    {
+      "id": "LB-GATE-001",
+      "status": "PASS",
+      "severity": "CRITICAL",
+      "message": "Release gate chặn lỗi Critical/High đã được cấu hình."
+    }
+  ]
+}

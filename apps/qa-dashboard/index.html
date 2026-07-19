@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LeadBox QA Dashboard</title>
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;margin:0;background:#f6f7f9;color:#1f2937}
+    header{padding:24px;background:#fff;border-bottom:1px solid #e5e7eb}
+    main{padding:24px;max-width:1200px;margin:auto}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
+    .metric{font-size:30px;font-weight:700;margin-top:6px}
+    table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}
+    th,td{padding:12px;border-bottom:1px solid #e5e7eb;text-align:left}
+    .pass{color:#067647}.fail{color:#b42318}.blocked{color:#b54708}.muted{color:#667085}
+  </style>
+</head>
+<body>
+<header><h1>LeadBox QA Dashboard</h1><div class="muted" id="generatedAt"></div></header>
+<main>
+  <section class="grid" id="metrics"></section>
+  <h2>Kết quả theo rule</h2>
+  <table><thead><tr><th>Rule</th><th>Trạng thái</th><th>Mức độ</th><th>Chi tiết</th></tr></thead><tbody id="rules"></tbody></table>
+</main>
+<script>
+fetch('./summary.json').then(r=>r.json()).then(data=>{
+ document.getElementById('generatedAt').textContent='Cập nhật: '+data.generatedAt;
+ const metrics=[['Pass',data.counts.pass,'pass'],['Fail',data.counts.fail,'fail'],['Blocked',data.counts.blocked,'blocked'],['Coverage',data.coverage+'%','']];
+ document.getElementById('metrics').innerHTML=metrics.map(([l,v,c])=>`<div class="card"><div>${l}</div><div class="metric ${c}">${v}</div></div>`).join('');
+ document.getElementById('rules').innerHTML=data.rules.map(r=>`<tr><td>${r.id}</td><td class="${r.status.toLowerCase()}">${r.status}</td><td>${r.severity}</td><td>${r.message}</td></tr>`).join('');
+}).catch(()=>{document.body.innerHTML+='<p style="padding:24px">Chưa có summary.json. Hãy chạy npm run qa:dashboard.</p>'});
+</script>
+</body></html>

@@ -1,0 +1,12 @@
+{
+  "version": "1.4.0",
+  "viewports": [
+    {"id":"desktop-wide","width":1440,"height":1000,"deviceScaleFactor":1},
+    {"id":"desktop-standard","width":1280,"height":900,"deviceScaleFactor":1},
+    {"id":"tablet-landscape","width":1024,"height":768,"deviceScaleFactor":1},
+    {"id":"tablet-portrait","width":768,"height":1024,"deviceScaleFactor":1},
+    {"id":"mobile-large","width":430,"height":932,"deviceScaleFactor":1},
+    {"id":"mobile-standard","width":390,"height":844,"deviceScaleFactor":1},
+    {"id":"mobile-small","width":360,"height":800,"deviceScaleFactor":1}
+  ]
+}

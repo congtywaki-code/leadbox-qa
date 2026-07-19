@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "status": "BLOCKED",
+  "checkedAt": "2026-07-19T18:19:31.400Z",
+  "stagingExecutionEnabled": false,
+  "missingVariables": [
+    "LEADBOX_BASE_URL",
+    "LEADBOX_APP_URL",
+    "SUPERADMIN_USERNAME",
+    "SUPERADMIN_PASSWORD",
+    "SHOPADMIN_USERNAME",
+    "SHOPADMIN_PASSWORD"
+  ],
+  "unsafeProductionTargets": [],
+  "writeTestsEnabled": false,
+  "message": "Staging execution is blocked until prerequisites are satisfied."
+}

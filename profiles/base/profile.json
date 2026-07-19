@@ -1,0 +1,18 @@
+{
+  "profileVersion": 1,
+  "name": "LeadBox base contract",
+  "roles": ["superadmin", "shopadmin", "public"],
+  "viewports": ["desktop", "tablet", "mobile"],
+  "releaseGate": {
+    "blockOn": ["critical", "high"],
+    "maxVisualDiffRatio": 0.01,
+    "requireTraceOnFailure": true
+  },
+  "requiredFlows": [
+    "authentication",
+    "media-publish-visibility",
+    "cross-role-renderer-parity",
+    "responsive-containment",
+    "workspace-isolation"
+  ]
+}

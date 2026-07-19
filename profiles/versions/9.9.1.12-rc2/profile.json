@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 4,
+  "leadboxVersion": "0.9.9.1.12-rc2-step9.9.1.12-rc2",
+  "mappedFromPackage": "leadbox-crm-step9.9.1.12-rc2-media-bootstrap-catalog.zip",
+  "runtime": {
+    "frontend": "wordpress-flatsome",
+    "superadmin": "wordpress-admin",
+    "shopadmin": "leadbox-app-template-redirect",
+    "sharedRenderer": "LeadBoxTemplateRenderer9912",
+    "mediaRuntime": "LeadBoxMediaRuntime",
+    "mediaStorage": "local-first-with-optional-r2-sync"
+  },
+  "urls": {
+    "baseEnv": "LEADBOX_BASE_URL",
+    "appEnv": "LEADBOX_APP_URL",
+    "publicEnv": "LEADBOX_PUBLIC_URL"
+  },
+  "routes": {
+    "wpLogin": "/login/",
+    "superadminLogin": "/login/",
+    "superadminMedia": "/wp-admin/admin.php?page=leadbox-system-v2&tab=media",
+    "superadminMediaNew": "/wp-admin/admin.php?page=leadbox-system-v2&tab=media&new_media=1",
+    "shopadminLogin": "/login/",
+    "shopadminHome": "/",
+    "shopadminMedia": "/capture-tools/new/studio",
+    "studio": "/capture-tools/new/studio",
+    "ownerMediaQuery": "/?rest_route=/leadbox/v1/owner/studio/media",
+    "ownerMediaPretty": "/wp-json/leadbox/v1/owner/studio/media",
+    "qaHealth": "/wp-json/leadbox-qa/v1/health"
+  },
+  "selectors": {
+    "wp": {
+      "username": "form input[name='log']",
+      "password": "form input[name='pwd']",
+      "submit": "form .lb-auth-submit",
+      "adminMarker": "#wpadminbar, body.wp-admin"
+    },
+    "shopLogin": {
+      "username": "form input[name='log']",
+      "password": "form input[name='pwd']",
+      "submit": "form .lb-auth-submit",
+      "authenticatedMarker": "body.lb-owner-app-body"
+    },
+    "media": {
+      "superadminList": "[data-lb9426-grid], [data-lb9426-list]",
+      "newMediaLink": "a[href*='new_media=1']",
+      "sourcePickerButton": "[data-lb9426-select-source]",
+      "sourceAttachmentId": "#lb9426SourceAttachmentId",
+      "titleInput": "form[data-lb9426-builder] input[name='title']",
+      "industrySelect": "form[data-lb9426-builder] select[name='industry']",
+      "topicSelect": "form[data-lb9426-builder] select[name='topic']",
+      "publishButton": "form[data-lb9426-builder] button[name='command'][value='publish']",
+      "publishSuccess": "[class*='notice'], [class*='lb9426-notice']",
+      "libraryOpen": "[data-lb9426-owner-library]",
+      "library": "[data-lb9426-owner-picker]",
+      "grid": "[data-lb9426-owner-grid]",
+      "card": ".lb9426-owner-item",
+      "cardByTitle": ".lb9426-owner-item:has-text('{title}')",
+      "industryFilter": "[data-lb9426-owner-industry]",
+      "topicFilter": "[data-lb9426-owner-topic]",
+      "orientationFilter": "[data-lb9426-owner-orientation]",
+      "layoutFilter": "[data-lb9426-owner-layout]",
+      "deviceFilter": "[data-lb9426-owner-device-filter]",
+      "uploadInput": "[data-lb9426-owner-upload]",
+      "useSelected": "[data-lb9426-owner-use]",
+      "selectedSummary": "[data-lb9426-owner-selection]",
+      "retry": "[data-media-retry]"
+    },
+    "studio": {
+      "shell": "#lbBuilder, [data-leadbox-studio]",
+      "preview": "#lbBuilder .lb-preview-stage",
+      "site": "#lbBuilder .lb-preview-site",
+      "canvas": "#lbLiveTool",
+      "rendererMarker": "[data-preview-renderer]",
+      "desktopButton": "[data-preview-mode='desktop']",
+      "mobileButton": "[data-preview-mode='mobile']"
+    }
+  },
+  "fixtures": {
+    "industry": "beauty",
+    "topic": "consultation",
+    "mediaFile": "fixtures/sample-media.svg"
+  },
+  "capabilities": {
+    "mediaWriteTest": false,
+    "taxonomyRequired": true,
+    "visualBaselineRequired": true,
+    "safeCleanup": false,
+    "apiContract": true,
+    "tenantIsolation": false,
+    "mediaDeleteRestore": false,
+    "visualBaselineGovernance": true,
+    "sharedRendererParity": true,
+    "superadminNativeMediaPickerRequired": true
+  },
+  "qaFoundationVersion": "2.0.0",
+  "testData": {
+    "prefix": "LBQA-",
+    "manifest": "fixtures/manifests/active-run.json",
+    "cleanupPolicy": "qa-prefix-only"
+  },
+  "apiContracts": {
+    "mediaCatalog": "/?rest_route=/leadbox/v1/owner/studio/media",
+    "mediaCatalogFallback": "/wp-json/leadbox/v1/owner/studio/media",
+    "expectedGet": {
+      "status": 200,
+      "ok": true,
+      "requiredKeys": [
+        "items",
+        "facets",
+        "count"
+      ]
+    },
+    "expectedUpload": {
+      "status": 201,
+      "scope": "workspace",
+      "storage_driver": "local"
+    }
+  },
+  "visual": {
+    "policy": "config/visual-policy.json",
+    "responsiveMatrix": "config/responsive-matrix.json",
+    "baselineStatus": "candidate-capture-awaiting-manual-approval"
+  },
+  "integration": {
+    "stagingExecution": true,
+    "realAuthenticationEvidence": true,
+    "mediaVisibilityDiagnosis": true,
+    "firstApprovedVisualBaselines": true,
+    "productionBlockedByDefault": true
+  }
+}

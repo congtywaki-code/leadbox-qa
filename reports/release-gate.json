@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-07-19T17:55:19.872Z",
+  "status": "BLOCKED",
+  "blockingRules": [
+    {
+      "id": "LB-MEDIA-001",
+      "severity": "HIGH",
+      "message": "Chưa map selector và route bản LeadBox chính thức."
+    },
+    {
+      "id": "LB-MEDIA-003",
+      "severity": "HIGH",
+      "message": "Chưa xác minh taxonomy ngành nghề/chủ đề xuyên vai trò."
+    }
+  ]
+}

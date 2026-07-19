@@ -1,0 +1,11 @@
+{
+  "baselineBranch": "main",
+  "approvalRequired": true,
+  "maxDiffPixelRatio": 0.002,
+  "animationPolicy": "disabled",
+  "fontReadinessRequired": true,
+  "maskDynamicRegions": true,
+  "forbidAutoApprovalInCi": true,
+  "requiredReviewers": 1,
+  "criticalSurfaces": ["superadmin-template-preview","shopadmin-studio-preview","public-renderer"]
+}

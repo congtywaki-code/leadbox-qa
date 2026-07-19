@@ -1,0 +1,10 @@
+node_modules/
+.env
+reports/.auth-*.json
+reports/html/
+reports/artifacts/
+reports/results.json
+reports/evidence/**/*.png
+baselines/candidates/*.png
+test-results/
+playwright-report/

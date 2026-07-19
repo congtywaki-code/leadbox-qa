@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#eef2ff"/>
+  <rect x="80" y="80" width="1040" height="640" rx="32" fill="#ffffff" stroke="#4f46e5" stroke-width="8"/>
+  <text x="600" y="380" text-anchor="middle" font-size="72" font-family="Arial" fill="#111827">LEADBOX QA MEDIA</text>
+  <text x="600" y="470" text-anchor="middle" font-size="36" font-family="Arial" fill="#4f46e5">visual fixture 1200 × 800</text>
+</svg>
